@@ -55,14 +55,47 @@ function CoursesPage() {
                 setLoading(false);
             }
         }
-
+        loadFilters();
     })
 
-    const filteredCourses = courses.filter(
-        (course) =>
-            course.title.toLowerCase().includes(search.toLowerCase()) ||
-            course.description?.toLowerCase().includes(search.toLowerCase())
-    );
+
+    const handleToggleTechnology = (tech) => {
+        setSelectedTechnologies((currentSelection) =>
+            currentSelection.includes(tech) ? currentSelection.filter((t) => t !== tech) : [...currentSelection, tech]
+        );
+    };
+
+    const handleToggleCategory = (cat) => {
+        setSelectedTechnologies((currentSelection) =>
+            currentSelection.includes(cat) ? currentSelection.filter((t) => t !== cat) : [...currentSelection, cat]
+        );
+    };
+
+    const handleToggleLevel = (level) => {
+        setSelectedTechnologies((currentSelection) =>
+            currentSelection.includes(level) ? currentSelection.filter((t) => t !== level) : [...currentSelection, level]
+        );
+    };
+
+    const filteredCourses = courses.filter((course) => {
+        const matchesSearch =
+            course.title?.toLowerCase().includes(search.toLowerCase()) ||
+            course.description?.toLowerCase().includes(search.toLowerCase());
+
+        const matchesTechnologies =
+            selectedTechnologies.length === 0 ||
+            selectedTechnologies.every((f) => course.technologies?.includes(f));
+
+        const matchesCategories =
+            selectedCategories.length === 0 ||
+            selectedCategories.includes(course.category);
+
+        const matchesLevels =
+            selectedLevels.length === 0 ||
+            selectedLevels.includes(course.level);
+
+        return matchesSearch && matchesTechnologies && matchesCategories && matchesLevels;
+    });
 
     return (
         <>
@@ -76,7 +109,19 @@ function CoursesPage() {
                 query={search}
                 onChange={setSearch}
             />
-            <FilterBar technologies={technologies} selectedTechnologies={[]} />
+            <FilterBar
+                technologies={technologies}
+                selectedTechnologies={selectedTechnologies}
+                onToggleTechnology={handleToggleTechnology}
+
+                categories={categories}
+                selectedCategories={selectedCategories}
+                onToggleCategory={handleToggleCategory}
+
+                levels={levels}
+                selectedLevels={selectedLevels}
+                onToggleLevels={handleToggleLevel}
+            />
 
             <div className='grid appear'>
                 <div className='row'>

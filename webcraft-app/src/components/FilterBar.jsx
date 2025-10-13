@@ -1,16 +1,15 @@
-function FilterBar({ technologies = [], selectedTechnologies = [], categories = [], selectedCategories = [], levels = [], selectedLevels = [] }) {
+function FilterBar({ technologies = [], selectedTechnologies = [], onToggleTechnology = () => {}, categories = [], selectedCategories = [], onToggleCategory = () => {}, levels = [], selectedLevels = [], onToggleLevels = () => {} }) {
   return (
     <>
       {technologies.length > 0 &&
         <div>
           <h3 class="text-center">Filter</h3>
-          <div class="filtres-tech grid d-flex justify-content-center">
-
-            {technologies.map((techno, index) => {
-              const isActive = selectedTechnologies.includes(techno);
+          <div className="d-flex flex-wrap justify-content-center gap-2">
+            {technologies.map((techno) => {
+              const isActive = selectedFilters.includes(techno);
               return (
                 <button
-                  key={index}
+                  key={techno}
                   className={`btn ${isActive ? 'btn-primary' : 'btn-outline-primary'}`}
                   onClick={() => onToggle(techno)}
                 >
@@ -25,14 +24,40 @@ function FilterBar({ technologies = [], selectedTechnologies = [], categories = 
       {categories.length > 0 &&
         <div>
           <h3 class="text-center">Filter</h3>
-          <div class="filtres-tech grid d-flex justify-content-center"></div>
+          <div className="d-flex flex-wrap justify-content-center gap-2">
+            {categories.map((cat) => {
+              const isActive = selectedFilters.includes(cat);
+              return (
+                <button
+                  key={cat}
+                  className={`btn ${isActive ? 'btn-primary' : 'btn-outline-primary'}`}
+                  onClick={() => onToggle(cat)}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
         </div>
       }
 
       {levels.length > 0 &&
         <div>
           <h3 class="text-center">Filter</h3>
-          <div class="filtres-tech grid d-flex justify-content-center"></div>
+          <div className="d-flex flex-wrap justify-content-center gap-2">
+            {levels.map((level) => {
+              const isActive = selectedFilters.includes(level);
+              return (
+                <button
+                  key={level}
+                  className={`btn ${isActive ? 'btn-primary' : 'btn-outline-primary'}`}
+                  onClick={() => onToggle(level)}
+                >
+                  {level}
+                </button>
+              );
+            })}
+          </div>
         </div>
       }
 
