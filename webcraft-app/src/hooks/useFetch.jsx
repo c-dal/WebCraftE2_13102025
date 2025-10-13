@@ -1,5 +1,3 @@
-import ProjectsPage from "../pages/ProjectsPage";
-
 const API_PROJECTS_URL = "https://webcraft-api.vercel.app/data/projects.json";
 const API_COURSES_URL = "https://webcraft-api.vercel.app/data/courses.json";
 
@@ -40,7 +38,7 @@ export async function getCourses() {
     // Transformer les données pour notre format
     return data.courses.map(course => ({
       id: course.id,
-      img: course.image,
+      image: course.image,
       title: course.title,
       category: course.category,
       level: course.level,

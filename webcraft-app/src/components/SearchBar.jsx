@@ -7,7 +7,7 @@ function SearchBar({query, onChange}) {
                 type="text"
                 placeholder="Rechercher"
                 value={query}
-                onChange={onChange}
+                onChange={(e) => onChange(e.target.value)} 
                 style={{ marginBottom: '1rem', padding: '0.5rem', width: '100%' }}
             />
 

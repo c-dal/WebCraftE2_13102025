@@ -1,6 +1,7 @@
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
 import { getProjects } from '../hooks/useFetch';
 import ProjectCard from '../components/ProjectCard';
+import SearchBar from '../components/SearchBar';
 
 function ProjectsPage() {
 
@@ -36,11 +37,20 @@ function ProjectsPage() {
 
   return (
     <>
+      {loading && <p>Chargement...</p>}
+      {error && <p>{error}</p>}
+
       <h1>Nos projets</h1>
       <h2>Sur cette page, consultez les projets réalisés pour nos clients qui nous ont fait confiance</h2>
+
+      <SearchBar
+        query={search}
+        onChange={setSearch}
+      />
+
       <div className='grid appear'>
         <div className='row'>
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <ProjectCard
               key={project.id}
               image={project.image}
