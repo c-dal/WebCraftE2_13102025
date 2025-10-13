@@ -8,7 +8,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Home from './pages/Home';
 import ProjectsPage from './pages/ProjectsPage';
 import CoursesPage from './pages/CoursesPage';
-import Inscription from './pages/Inscription';
+import InscriptionForm from './components/InscriptionForm';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/projets" element={<ProjectsPage />} />
           <Route path="/formations" element={<CoursesPage />} />
-          <Route path="/inscription" element={<Inscription />} />
+          <Route path="/inscription" element={<InscriptionForm />} />
           <Route path="*" element={
             <div className="alert alert-warning mt-5">
               <h2>404 - Page non trouvée</h2>

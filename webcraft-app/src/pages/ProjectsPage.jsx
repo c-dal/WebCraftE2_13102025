@@ -48,6 +48,12 @@ function ProjectsPage() {
         onChange={setSearch}
       />
 
+        {/* Boutons filtres non implémentés ici à cause d'erreurs CORS, 
+            mais normalement ma barre de filtre  a été normalisée pour être utilisée 
+            en fonction des arguments passés
+            -> idée : mêmes fonctions que CoursesPage mais seulement pour Technologies et Catégories
+       */}
+
       <div className='grid appear'>
         <div className='row'>
           {filteredProjects.map((project) => (

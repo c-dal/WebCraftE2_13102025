@@ -3,15 +3,15 @@ function FilterBar({ technologies = [], selectedTechnologies = [], onToggleTechn
     <>
       {technologies.length > 0 &&
         <div>
-          <h3 class="text-center">Filter</h3>
+          <h3 class="text-center">Filtrer par technologie</h3>
           <div className="d-flex flex-wrap justify-content-center gap-2">
             {technologies.map((techno) => {
-              const isActive = selectedFilters.includes(techno);
+              const isActive = selectedTechnologies.includes(techno);
               return (
                 <button
                   key={techno}
                   className={`btn ${isActive ? 'btn-primary' : 'btn-outline-primary'}`}
-                  onClick={() => onToggle(techno)}
+                  onClick={() => onToggleTechnology(techno)}
                 >
                   {techno}
                 </button>
@@ -23,15 +23,15 @@ function FilterBar({ technologies = [], selectedTechnologies = [], onToggleTechn
 
       {categories.length > 0 &&
         <div>
-          <h3 class="text-center">Filter</h3>
+          <h3 class="text-center">Filtrer par catégorie</h3>
           <div className="d-flex flex-wrap justify-content-center gap-2">
             {categories.map((cat) => {
-              const isActive = selectedFilters.includes(cat);
+              const isActive = selectedCategories.includes(cat);
               return (
                 <button
                   key={cat}
                   className={`btn ${isActive ? 'btn-primary' : 'btn-outline-primary'}`}
-                  onClick={() => onToggle(cat)}
+                  onClick={() => onToggleCategory(cat)}
                 >
                   {cat}
                 </button>
@@ -43,15 +43,15 @@ function FilterBar({ technologies = [], selectedTechnologies = [], onToggleTechn
 
       {levels.length > 0 &&
         <div>
-          <h3 class="text-center">Filter</h3>
+          <h3 class="text-center">Filtrer par niveau</h3>
           <div className="d-flex flex-wrap justify-content-center gap-2">
             {levels.map((level) => {
-              const isActive = selectedFilters.includes(level);
+              const isActive = selectedLevels.includes(level);
               return (
                 <button
                   key={level}
                   className={`btn ${isActive ? 'btn-primary' : 'btn-outline-primary'}`}
-                  onClick={() => onToggle(level)}
+                  onClick={() => onToggleLevels(level)}
                 >
                   {level}
                 </button>

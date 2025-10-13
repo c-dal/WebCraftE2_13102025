@@ -41,11 +41,11 @@ function CoursesPage() {
         async function loadFilters() {
             try {
                 setLoading(true);
-                const technologies = await getCourseTechnos();
+                const technologies = (await getCourseTechnos()) || [];
                 setTechnologies(technologies);
-                const categories = await getCourseCategories();
+                const categories = (await getCourseCategories()) || [];
                 setCategories(categories);
-                const levels = await getCourseLevels();
+                const levels = (await getCourseLevels()) || [];
                 setLevels(levels);
                 setError(null);
             } catch (err) {
@@ -56,7 +56,7 @@ function CoursesPage() {
             }
         }
         loadFilters();
-    })
+    }, [])
 
 
     const handleToggleTechnology = (tech) => {
@@ -66,13 +66,13 @@ function CoursesPage() {
     };
 
     const handleToggleCategory = (cat) => {
-        setSelectedTechnologies((currentSelection) =>
+        setSelectedCategories((currentSelection) =>
             currentSelection.includes(cat) ? currentSelection.filter((t) => t !== cat) : [...currentSelection, cat]
         );
     };
 
     const handleToggleLevel = (level) => {
-        setSelectedTechnologies((currentSelection) =>
+        setSelectedLevels((currentSelection) =>
             currentSelection.includes(level) ? currentSelection.filter((t) => t !== level) : [...currentSelection, level]
         );
     };
@@ -94,7 +94,8 @@ function CoursesPage() {
             selectedLevels.length === 0 ||
             selectedLevels.includes(course.level);
 
-        return matchesSearch && matchesTechnologies && matchesCategories && matchesLevels;
+        return matchesSearch 
+        && matchesTechnologies && matchesCategories && matchesLevels;
     });
 
     return (
