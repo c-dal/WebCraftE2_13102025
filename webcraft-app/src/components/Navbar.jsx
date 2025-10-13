@@ -2,14 +2,14 @@ import logo from "../assets/logoWebCraft.jpeg";
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a className="navbar-brand" href="/">
           <img
             src={logo}
             alt="Logo"
             width="50"
             height="50"
-            className="d-inline-block align-text-center"
+            className="d-inline-block align-text-center logo"
           />
           WebCraft Solutions
         </a>

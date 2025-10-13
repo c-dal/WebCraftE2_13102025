@@ -5,7 +5,7 @@ function Footer() {
             <a href="/" className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                 <svg className="bi" width="30" height="24"><use xlinkHref="#bootstrap"></use></svg>
             </a>
-            <span className="text-muted">© 2025 StreamFlix, Inc</span>
+            <span className="text-muted">© 2025 WebCraft Solutions, Inc</span>
         </div>
 
         <div className="col-md-4 d-flex justify-content-end">
